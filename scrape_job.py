@@ -16,5 +16,5 @@ if __name__ == '__main__':
                       db_name=config['DB_NAME'],
                       collection_name=config['DB_COLLECTION_GAME_LINES'])
     result = creator.create_live_records(scrape_results)
-    print(result)
+
     pass

@@ -16,10 +16,14 @@ class Creator:
 
         if type(records) is list:
             result = self.db_handler.insert_many(records)
-            return result
+            if result.acknowledged:
+                print(f"Created records with ids: {result.inserted_ids}")
+                return result.inserted_ids
         if type(records) is dict:
             result = self.db_handler.insert_one(records)
-            return result
+            if result.acknowledged:
+                print(f"Created record with id: {result.inserted_id}")
+                return result.inserted_id
 
     def create_historical_records(self, destination_collection_name):
         pass

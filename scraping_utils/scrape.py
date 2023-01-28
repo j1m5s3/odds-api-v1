@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 
 def scrape_nfl_game_lines(url):
@@ -48,16 +49,9 @@ def scrape_nfl_game_lines(url):
     results_dict = {}
     for team, outcome in zip(teams, outcome_arr):
         results_dict[team.text] = outcome
-
+    results_dict["created_at"] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     return results_dict
 
 
 
 
-
-
-
-
-if __name__ == '__main__':
-    scrape_odds()
-    pass
