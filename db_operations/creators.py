@@ -26,5 +26,17 @@ class Creator:
                 return result.inserted_id
 
     def create_historical_records(self, destination_collection_name):
-        pass
+        from_source_collection = self.db_handler
+        to_destination_collection = self.client[self.db_name][destination_collection_name]
+
+        # Find all records in the source collection
+        from_records = from_source_collection.find()
+
+        # Insert the records into the destination collection
+        result = to_destination_collection.insert_many(from_records)
+        if result.acknowledged:
+            print(f"Created records with ids: {result.inserted_ids}")
+            return result.inserted_ids
+
+        return
 
