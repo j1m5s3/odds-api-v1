@@ -1,0 +1,7 @@
+odds-api-v1 TODO
+
+* 1/28/2023:
+  * Create Getters for api queries
+  * Create flask routing server
+  * Create live bets scraping jobs
+    * Create Creators to create records in database
